@@ -15,3 +15,23 @@
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
 }
+
+.link-hover {
+  transition: opacity .3s;
+}
+
+@media screen and (hover: hover) {
+  .link-hover:hover {
+    opacity: .7;
+  }
+}
+
+.button-hover {
+  transition: opacity .3s;
+}
+
+@media screen and (hover: hover) {
+  .button-hover:hover {
+    opacity: .8;
+  }
+}
