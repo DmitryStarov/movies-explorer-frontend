@@ -11,10 +11,6 @@
   letter-spacing: -0.88px;
 }
 
-.section-title_type_techs {
-  padding-top: 110px;
-}
-
 @media screen and (max-width: 670px) {
   .section-title {
     font-size: 18px;

@@ -6,7 +6,7 @@
 }
 
 .about-project__info {
-  padding: 70px 0 110px;
+  padding: 70px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
@@ -66,12 +66,10 @@
 .about-project__time-caption {
   text-align: center;
   color: #8B8B8B;
+  padding-bottom: 100px;
 }
 
 @media screen and (max-width: 769px){
-  .about-project {
-    padding: 90px 50px;
-  }
 
   .about-project__info {
     padding: 70px 0 93px;
@@ -93,9 +91,6 @@
 }
 
 @media screen and (max-width: 670px){
-  .about-project {
-    padding: 70px 18px;
-  }
 
   .about-project__info {
     padding: 61px 0 60px;
