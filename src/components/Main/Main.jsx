@@ -2,9 +2,10 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './Main.css';
 
-const Main = () => (
+const Main = ({ isLoggedIn }) => (
   <>
-    <Header />
+    <Header isLoggedIn={isLoggedIn} />
+
     <Footer />
   </>
 );
