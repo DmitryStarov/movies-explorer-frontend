@@ -1,37 +1,24 @@
-import './Register.css';
+import './Login.css';
 import Auth from '../Auth/Auth';
-import AuthInput from '../AuthInput/AuthInput';
 import useValidator from '../../hooks/useValidator';
+import AuthInput from '../AuthInput/AuthInput';
 
-const Register = ({ errorText }) => {
+const Login = ({ errorText }) => {
   const {
     inputValues, errors, isValid, handleChange,
   } = useValidator();
 
   return (
     <Auth
-      title="Добро пожаловать!"
-      formName="sign-up"
-      buttonText="Зарегистрироваться"
+      title="Рады видеть!"
+      formName="sign-in"
+      buttonText="Войти"
       isValid={isValid}
       requestErrorText={errorText}
-      paragraphText="Уже зарегистрированы?"
-      paragraphLink="/signin"
-      paragraphButton="Войти"
+      paragraphText="Ещё не зарегистрированы?"
+      paragraphLink="/signup"
+      paragraphButton="Регистрация"
     >
-      <AuthInput
-        type="text"
-        placeholder="Имя"
-        label
-        name="name"
-        minLength="2"
-        maxLength="30"
-        inputValue={inputValues.name}
-        errorMessage={errors.name}
-        placeInput="auth"
-        handleChange={handleChange}
-        required
-      />
       <AuthInput
         type="email"
         placeholder="E-mail"
@@ -58,4 +45,4 @@ const Register = ({ errorText }) => {
   );
 };
 
-export default Register;
+export default Login;

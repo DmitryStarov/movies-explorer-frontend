@@ -3,6 +3,7 @@ import './App.css';
 import Main from '../Main/Main';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Register from '../Register/Register';
+import Login from '../Login/Login';
 
 const App = () => (
   <Routes>
@@ -13,6 +14,10 @@ const App = () => (
     <Route
       path="/signup"
       element={<Register requestErrorText="Что-то пошло не так..." />}
+    />
+    <Route
+      path="/signin"
+      element={<Login />}
     />
     <Route
       path="*"
