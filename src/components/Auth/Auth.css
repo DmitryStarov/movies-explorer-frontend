@@ -64,7 +64,7 @@
 }
 
 .auth__submit-button:disabled {
-  background-color: #d4d0d0;
+  background-color: #cbc4c4;
   color: #8B8B8B;
 }
 

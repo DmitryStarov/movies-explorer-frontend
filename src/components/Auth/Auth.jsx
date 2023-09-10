@@ -23,7 +23,7 @@ const Authentication = ({
         {children}
         <p className="auth__request-error">{errorText}</p>
         <button
-          className="auth__submit-btn button-hover"
+          className="auth__submit-button button-hover"
           disabled={!isValid}
           type="submit"
         >
