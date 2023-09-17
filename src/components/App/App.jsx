@@ -4,6 +4,7 @@ import Main from '../Main/Main';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import Profile from '../Profile/Profile';
 
 const App = () => (
   <Routes>
@@ -18,6 +19,10 @@ const App = () => (
     <Route
       path="/signin"
       element={<Login />}
+    />
+    <Route
+      path="/profile"
+      element={<Profile />}
     />
     <Route
       path="*"
