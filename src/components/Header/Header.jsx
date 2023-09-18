@@ -4,7 +4,7 @@ import logo from '../../image/logo.svg';
 import AuthNavigation from '../AuthNavigation/AuthNavigation';
 import Navigation from '../Navigation/Navigation';
 
-const Header = ({ isLoggedIn }) => (
+const Header = ({ isLoggedIn = false }) => (
   <header className="header">
     <Link to="/" className="header__link">
       <img className="header__logo" src={logo} alt="логотип" />
