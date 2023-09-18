@@ -5,6 +5,8 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
+import Movies from '../Movies/Movies';
+import { testMovies } from '../../utils/constants';
 
 const App = () => (
   <Routes>
@@ -23,6 +25,10 @@ const App = () => (
     <Route
       path="/profile"
       element={<Profile />}
+    />
+    <Route
+      path="/movies"
+      element={<Movies movies={testMovies} />}
     />
     <Route
       path="*"

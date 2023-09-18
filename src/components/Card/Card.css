@@ -1,0 +1,155 @@
+.card {
+  background-color: #222222;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card__link {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 364/203;
+}
+
+.card__image {
+  width: 100%;
+  display: block;
+  aspect-ratio: 364/203;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__image_type_error {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.card__description {
+  padding: 9px 16px 16px;
+  display: grid;
+  grid-template-columns: 250px 58px;
+  row-gap: 34px;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card__description_type_saved-movies {
+  cursor: pointer;
+}
+
+.card__title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1.23;
+  font-weight: 500;
+}
+
+.card__save-button {
+  width: 72px;
+  height: 21px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  color: #ffffff;
+  border-radius: 30px;
+  border: none;
+  background-color: #313131;
+  font-size: 12px;
+  line-height: 0.91;
+  text-align: center;
+}
+
+.card__save-button_active {
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background-image: url("../../image/save3.svg");
+}
+
+.card__delete-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-image: url("../../image/delete.svg");
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  background-size: 7px;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 3;
+}
+
+@media screen and (hover: hover) {
+  .card__delete-button {
+    opacity: 0;
+  }
+
+  .card__description_type_saved-movies:hover .movies-card__delete-btn {
+    opacity: 1;
+  }
+}
+
+.card__subtitle {
+  width: 52px;
+  height: 18px;
+  margin: 0;
+  border-radius: 3px;
+  background-color: #2F2F2F;
+  color: #8B8B8B;
+  text-align: center;
+  font-size: 11px;
+  line-height: 0.9;
+  font-weight: 400;
+
+}
+
+@media screen and (max-width: 769px) {
+  .card__link {
+    aspect-ratio: 339/190;
+  }
+
+  .movies-card__image {
+    aspect-ratio: 339/190;
+  }
+
+  .card__description {
+    padding: 8px 14px 13px;
+    row-gap: 8px;
+  }
+
+  .card__title {
+    margin-bottom: 2px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .card__link {
+    aspect-ratio: 25/14;
+  }
+
+  .card__image {
+    aspect-ratio: 25/14;
+  }
+
+  .card__desc {
+    padding: 7px 10px 14px 14px;
+    row-gap: 6px;
+  }
+
+  .card__title {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .card__subtitle {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
