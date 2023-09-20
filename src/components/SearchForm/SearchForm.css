@@ -40,7 +40,7 @@
   border: 1px solid transparent;
   color: #ffffff;
   font-size: 14px;
-  line-height: 1.28px;
+  line-height: 1.28;
   font-weight: 400;
   transition: border .3s;
 }
@@ -70,9 +70,9 @@
   align-items: center;
   gap: 12px;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 1.28;
   font-weight: 400;
-  color: #fff;
+  color: #ffffff;
 }
 
 .search-form__checkbox {
@@ -86,7 +86,6 @@
   border-radius: 20px;
   background-color: #EBEBEB;
   position: relative;
-  transition: background-color .3s;
 }
 
 .search-form__slider_active {

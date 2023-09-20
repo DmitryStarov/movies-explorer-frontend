@@ -23,6 +23,7 @@ module.exports = {
     'no-console': 'off',
     'react/react-in-jsx-scope': 'off',
     'no-underscore-dangle': 'off',
+    'linebreak-style': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',

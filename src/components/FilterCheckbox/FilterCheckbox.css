@@ -14,8 +14,8 @@
 
 .filter-checkbox__slider {
   display: block;
-  width: 36px;
-  height: 16px;
+  width: 34px;
+  height: 14px;
   border-radius: 20px;
   background-color: #EBEBEB;
   position: relative;
@@ -30,18 +30,18 @@
   content: "";
   position: absolute;
   display: block;
-  width: 14px;
-  height: 14px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: #F5F5F5;
-  top: 1px;
-  left: 4px;
+  background-color: #C4C4C4;
+  top: 2px;
+  left: 2px;
   transition: transform .3s;
 }
 
 .filter-checkbox__slider_active::before {
-  background-color: #fff;
-  transform: translateX(16px);
+  background-color: #ffffff;
+  transform: translateX(20px);
 }
 
 @media screen and (max-width: 670px) {

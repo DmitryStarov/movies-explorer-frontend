@@ -1,5 +1,5 @@
-import './AboutProject.css';
 import SectionTitle from '../SectionTitle/SectionTitle';
+import './AboutProject.css';
 
 const AboutProject = () => (
   <section className="about-project" id="about-project">
@@ -30,7 +30,9 @@ const AboutProject = () => (
         <span className="about-project__time-caption">Back-end</span>
       </div>
       <div className="about-project__time-interval">
-        <div className="about-project__time-line about-project__time-line_type_front">4 недели</div>
+        <div className="about-project__time-line about-project__time-line_type_front">
+          4 недели
+        </div>
         <span className="about-project__time-caption">Front-end</span>
       </div>
     </div>
