@@ -54,9 +54,9 @@
   color: #8B8B8B;
 }
 
-.search-form__submit-btn {
-  width: 44px;
-  height: 44px;
+.search-form__submit-button {
+  min-width: 44px;
+  min-height: 44px;
   border: none;
   background-color: #2F2F2F;
   padding: 0;

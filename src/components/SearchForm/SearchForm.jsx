@@ -14,7 +14,7 @@ const SearchForm = () => (
           required
         />
         <button
-          className="search-form__submit-btn button-hover"
+          className="search-form__submit-button button-hover"
           type="submit"
           aria-label="Поиск"
         />
