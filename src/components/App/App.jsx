@@ -6,6 +6,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 import { testMovies } from '../../utils/constants';
 
 const App = () => (
@@ -29,6 +30,10 @@ const App = () => (
     <Route
       path="/movies"
       element={<Movies movies={testMovies} />}
+    />
+    <Route
+      path="/saved-movies"
+      element={<SavedMovies movies={testMovies} />}
     />
     <Route
       path="*"
