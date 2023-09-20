@@ -6,7 +6,7 @@ import CardList from '../CardsList/CardsList';
 
 const Movies = ({ movies }) => (
   <>
-    <Header />
+    <Header isLoggedIn="true" />
     <main>
       <SearchForm />
       <CardList movies={movies} isSavedMovies />

@@ -54,7 +54,6 @@ const CardsList = ({ movies, isSavedMovies }) => {
 
         : <p className="card-list__title">Ничего не найдено</p>}
       {testMovies.length > currentPage * perPage
-        && !isSavedMovies
         && (
           <button
             className="card-list__button button-hover"
