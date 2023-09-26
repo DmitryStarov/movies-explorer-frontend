@@ -7,7 +7,6 @@
   align-items: center;
   box-sizing: border-box;
   justify-content: space-between;
-  padding-bottom: 20px;
 }
 
 .header__logo {
@@ -29,6 +28,6 @@
   .header {
     padding-left: 14px;
     padding-right: 14px;
-    padding-bottom: 14px;
+    padding-bottom: 30px;
   }
 }

@@ -31,7 +31,9 @@
 }
 
 @media screen and (max-width: 670px){
-
+  .nav-tab {
+    margin: 0 auto 17px;
+  }
   .nav-tab__links {
     gap: 6px;
   }

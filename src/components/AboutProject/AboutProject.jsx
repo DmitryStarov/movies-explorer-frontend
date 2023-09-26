@@ -26,13 +26,13 @@ const AboutProject = () => (
     </div>
     <div className="about-project__time-info">
       <div className="about-project__time-interval">
-        <div className="about-project__time-line">1 неделя</div>
+        <p className="about-project__time-line">1 неделя</p>
         <span className="about-project__time-caption">Back-end</span>
       </div>
       <div className="about-project__time-interval">
-        <div className="about-project__time-line about-project__time-line_type_front">
+        <p className="about-project__time-line about-project__time-line_type_front">
           4 недели
-        </div>
+        </p>
         <span className="about-project__time-caption">Front-end</span>
       </div>
     </div>

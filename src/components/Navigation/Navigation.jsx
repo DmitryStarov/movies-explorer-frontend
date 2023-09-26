@@ -14,7 +14,7 @@ const Navigation = () => {
       <button
         type="button"
         className={`navigation__burger-menu button-hover
-        ${isMenuOpened ? 'navigation__burger_active' : ''}`}
+        ${isMenuOpened ? 'navigation__burger-menu_active' : ''}`}
         onClick={handleOpenMenu}
       >
         <span className={`navigation__burger-line

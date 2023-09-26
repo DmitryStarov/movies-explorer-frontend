@@ -30,10 +30,8 @@
 
 .card__description {
   padding: 9px 16px 16px;
-  display: grid;
-  grid-template-columns: 250px 58px;
-  column-gap: 34px;
-  align-items: center;
+  display: flex;
+  justify-content: space-between;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -42,7 +40,7 @@
 }
 
 .card__title {
-  width: 250px;
+  max-width: 250px;
   margin: 0;
   color: #ffffff;
   font-size: 13px;
@@ -64,6 +62,7 @@
   font-size: 12px;
   line-height: 0.91;
   text-align: center;
+  cursor: pointer;
 }
 
 .card__save-button_active {
@@ -71,21 +70,24 @@
   height: 21px;
   border-radius: 50%;
   background-color: transparent;
-  background-image: url("../../image/save3.svg");
+  background-image: url("../../images/save3.svg");
+  cursor: pointer;
 }
 
 .card__delete-button {
-  width: 30px;
-  height: 30px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 21px;
+  height: 21px;
   border-radius: 50%;
-  background-image: url("../../image/delete.svg");
+  background-image: url("../../images/delete.svg");
   border: none;
   padding: 0;
+  border-radius: 50%;
   background-color: transparent;
-  background-size: 7px;
-  background-repeat: no-repeat;
-  background-position: center;
   z-index: 3;
+  cursor: pointer;
 }
 
 @media screen and (hover: hover) {
@@ -100,6 +102,7 @@
 
 .card__subtitle {
   width: 52px;
+  max-height: 12px;
   margin: 0;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -123,7 +126,7 @@
   }
 
   .card__description {
-    padding: 8px 14px 13px;
+    padding: 25px 0 0;
     row-gap: 8px;
   }
 

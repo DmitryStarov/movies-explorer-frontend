@@ -71,17 +71,16 @@
 }
 
 .profile__input_active {
-  border: 1px solid rgba(61, 220, 132, .4);
+  border: 1px solid rgb(215, 218, 216);
   border-radius: 3px;
   text-align: center;
 }
-
+.profile__input_active:focus {
+  outline: none;
+  border: 1px solid rgba(43, 224, 128, 1);
+}
 .profile__input_active-error {
   border: 1px solid rgba(344, 78, 93, .4);
-}
-
-.profile__input:focus {
-  outline: none;
 }
 
 .profile__error {
@@ -107,7 +106,7 @@
   color: #3DDC84;
 }
 
-.profile__edit-buttonn {
+.profile__edit-button {
   width: max-content;
   margin-top: 204px;
   padding: 0;
@@ -164,13 +163,13 @@
   }
 
   .profile__edit-button {
-    margin-top: 194px;
+    margin-top: 195px;
   }
 }
 
 @media screen and (max-width: 670px) {
   .profile {
-    padding: 70px 30px 40px;
+    padding: 58px 30px 40px;
   }
 
   .profile__field {
@@ -189,7 +188,7 @@
   .profile__edit-button {
     font-size: 12px;
     line-height: 1.25;
-    margin-top: auto;
+    margin-top: 365px;
   }
 
   .profile__logout {

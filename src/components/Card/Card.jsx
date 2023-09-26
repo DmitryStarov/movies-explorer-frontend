@@ -1,6 +1,5 @@
 import './Card.css';
 import { useState } from 'react';
-// import imageError from '../../assets/images/no-photo.svg';
 
 const MoviesCard = ({
   movie: {

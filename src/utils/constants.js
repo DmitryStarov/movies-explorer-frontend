@@ -9,7 +9,7 @@ const testMovies = [
     trailerLink: 'https://www.youtube.com/watch?v=UXcqcdYABFw',
     thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPYNBKo1zsT_iRVR5GXpp7n1xgmaaFJdQ1RG0Okcd7r9cRMcP',
     movieId: '001',
-    nameRU: '«Роллинг Стоунз» в изгнании',
+    nameRU: '«Роллинг Стоунз» в изгнании длинное название 2 строки',
     nameEN: 'Stones in Exile',
   },
   {
@@ -35,7 +35,7 @@ const testMovies = [
     trailerLink: 'https://www.youtube.com/watch?v=UXcqcdYABFw',
     thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPYNBKo1zsT_iRVR5GXpp7n1xgmaaFJdQ1RG0Okcd7r9cRMcP',
     movieId: '003',
-    nameRU: '«Роллинг Стоунз» в изгнании',
+    nameRU: '«Роллинг Стоунз» в изгнании длинное название 2 строки',
     nameEN: 'Stones in Exile',
   },
   {
@@ -87,7 +87,7 @@ const testMovies = [
     trailerLink: 'https://www.youtube.com/watch?v=UXcqcdYABFw',
     thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPYNBKo1zsT_iRVR5GXpp7n1xgmaaFJdQ1RG0Okcd7r9cRMcP',
     movieId: '007',
-    nameRU: '«Роллинг Стоунз» в изгнании',
+    nameRU: '«Роллинг Стоунз» в изгнании длинное название 2 строки',
     nameEN: 'Stones in Exile',
   },
   {
@@ -126,7 +126,7 @@ const testMovies = [
     trailerLink: 'https://www.youtube.com/watch?v=UXcqcdYABFw',
     thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPYNBKo1zsT_iRVR5GXpp7n1xgmaaFJdQ1RG0Okcd7r9cRMcP',
     movieId: '010',
-    nameRU: '«Роллинг Стоунз» в изгнании',
+    nameRU: '«Роллинг Стоунз» в изгнании длинное название 2 строки',
     nameEN: 'Stones in Exile',
   },
   {

@@ -46,14 +46,15 @@ const CardsList = ({ movies, isSavedMovies }) => {
     >
       {testMovies.length !== 0
         ? (
-          <div className="card-list__container">
+          <ul className="card-list__container">
             {currentMovies.map(movie => (
               <Card movie={movie} key={movie.movieId} isSavedMovies={isSavedMovies} />))}
-          </div>
+          </ul>
         )
 
         : <p className="card-list__title">Ничего не найдено</p>}
       {testMovies.length > currentPage * perPage
+        && !isSavedMovies
         && (
           <button
             className="card-list__button button-hover"

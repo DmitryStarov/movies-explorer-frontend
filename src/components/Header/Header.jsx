@@ -1,6 +1,6 @@
 import './Header.css';
 import { Link } from 'react-router-dom';
-import logo from '../../image/logo.svg';
+import logo from '../../images/logo.svg';
 import AuthNavigation from '../AuthNavigation/AuthNavigation';
 import Navigation from '../Navigation/Navigation';
 

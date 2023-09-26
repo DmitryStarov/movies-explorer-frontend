@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 1.5;
   font-weight: 400;
   color: #ffffff;
 }
@@ -20,6 +20,7 @@
   background-color: #EBEBEB;
   position: relative;
   transition: background-color .3s;
+  cursor: pointer;
 }
 
 .filter-checkbox__slider_active {

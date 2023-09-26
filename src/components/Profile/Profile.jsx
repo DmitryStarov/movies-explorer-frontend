@@ -1,5 +1,6 @@
 import './Profile.css';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import useValidator from '../../hooks/useValidator';
 
@@ -18,6 +19,10 @@ const Profile = () => {
     evt.preventDefault();
     setIsEditProfile(!isEditProfile);
   };
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    navigate('/', { replace: true });
+  };
 
   useEffect(() => {
     setInputValues({ name: 'User', email: 'test@test.com' });
@@ -25,7 +30,7 @@ const Profile = () => {
 
   return (
     <>
-      <Header />
+      <Header isLoggedIn="true" />
       <main className="profile">
         <div className="profile__container">
           <h1 className="profile__title">Привет, User!</h1>
@@ -41,9 +46,9 @@ const Profile = () => {
                 maxLength="30"
                 required
                 onChange={handleChange}
-                value={inputValues.name}
+                value={inputValues.name || ''}
                 autoComplete="off"
-                disabled={!isEditProfile && 'true'}
+                disabled={!isEditProfile}
               />
               <span
                 className="profile__error"
@@ -60,9 +65,9 @@ const Profile = () => {
                 name="email"
                 required
                 onChange={handleChange}
-                value={inputValues.email}
+                value={inputValues.email || ''}
                 autoComplete="off"
-                disabled={!isEditProfile && 'true'}
+                disabled={!isEditProfile}
               />
               <span
                 className="profile__error"
@@ -89,13 +94,13 @@ const Profile = () => {
             && (
             <>
               <button
-                className="profile__edit-buttonn button-hover"
+                className="profile__edit-button button-hover"
                 type="button"
                 onClick={handleClickEditProfile}
               >
                 {isEditProfile ? 'Сохранить' : 'Редактировать'}
               </button>
-              <button className="profile__logout button-hover" type="button">Выйти из аккаунта</button>
+              <button className="profile__logout button-hover" type="button" onClick={handleLogOut}>Выйти из аккаунта</button>
             </>
             )}
           </form>

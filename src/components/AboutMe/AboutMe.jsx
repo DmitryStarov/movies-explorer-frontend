@@ -1,7 +1,7 @@
 import './AboutMe.css';
 import { Link } from 'react-router-dom';
 import SectionTitle from '../SectionTitle/SectionTitle';
-import studentPhoto from '../../image/student.jpg';
+import studentPhoto from '../../images/student.jpg';
 import Portfolio from '../Portfolio/Portfolio';
 
 const AboutMe = () => (

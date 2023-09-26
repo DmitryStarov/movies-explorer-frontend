@@ -1,6 +1,6 @@
 import './Auth.css';
 import { Link } from 'react-router-dom';
-import logo from '../../image/logo.svg';
+import logo from '../../images/logo.svg';
 
 const Authentication = ({
   title,
@@ -21,7 +21,7 @@ const Authentication = ({
       <h1 className="auth__title">{title}</h1>
       <form className="auth__form" name={formName}>
         {children}
-        <p className="auth__request-error">{errorText}</p>
+        <p className="auth__error">{errorText}</p>
         <button
           className="auth__submit-button button-hover"
           disabled={!isValid}
