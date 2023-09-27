@@ -18,6 +18,7 @@
   display: grid;
   gap: 37px 24px;
   grid-template-columns: repeat(auto-fill,minmax(364px,1fr));
+  padding: 0;
 }
 
 .card-list__title {
@@ -40,7 +41,7 @@
   font-weight: 500;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 900px) {
   .card-list {
     padding-left: 30px;
     padding-right: 30px;

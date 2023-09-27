@@ -13,7 +13,7 @@ const Authentication = ({
   paragraphButton,
   isValid,
 }) => (
-  <main className="auth">
+  <section className="auth">
     <div className="auth__container">
       <Link to="/" className="auth__main-link button-hover">
         <img className="auth__logo" src={logo} alt="логотип" />
@@ -40,7 +40,7 @@ const Authentication = ({
         </Link>
       </p>
     </div>
-  </main>
+  </section>
 );
 
 export default Authentication;

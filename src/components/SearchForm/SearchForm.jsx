@@ -2,7 +2,8 @@ import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 const SearchForm = () => (
-  <section className="search-form">
+  // здест div по совету валидатора, т.к. нет заголовков 2-6 уровня
+  <div className="search-form">
     <form className="search-form__form" name="search">
       <div className="search-form__search-bar">
         <input
@@ -21,7 +22,7 @@ const SearchForm = () => (
       </div>
       <FilterCheckbox />
     </form>
-  </section>
+  </div>
 );
 
 export default SearchForm;

@@ -26,7 +26,7 @@ const MoviesCard = ({
   };
 
   return (
-    <article className="card">
+    <li className="card">
       {isSavedMovies
         ? (
           <button
@@ -57,7 +57,7 @@ const MoviesCard = ({
         <h2 className="card__title">{nameRU}</h2>
         <p className="card__subtitle">{convertDuration()}</p>
       </div>
-    </article>
+    </li>
   );
 };
 

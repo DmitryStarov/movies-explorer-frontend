@@ -44,6 +44,7 @@
   font-size: 14px;
   line-height: 1.21;
   font-weight: 400;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 769px) {

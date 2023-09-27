@@ -11,6 +11,7 @@ const Navigation = () => {
 
   return (
     <div className="navigation">
+
       <button
         type="button"
         className={`navigation__burger-menu button-hover
@@ -27,66 +28,68 @@ const Navigation = () => {
         ${isMenuOpened ? 'navigation__burger-line_active' : ''}`}
         />
       </button>
-      <nav className={`navigation__links-container
+      <div className={`navigation__overlay ${isMenuOpened ? 'navigation__overlay_visible' : ''}`}>
+        <nav className={`navigation__links-container
       ${isMenuOpened ? 'navigation__links-container_opened' : ''}`}
-      >
-        <ul className={`navigation__links
-        ${isMenuOpened ? 'navigation__links_opened' : ''}`}
         >
-          <li
-            className="
+          <ul className={`navigation__links
+        ${isMenuOpened ? 'navigation__links_opened' : ''}`}
+          >
+            <li
+              className="
             navigation__links-item
             navigation__links-item_type_main"
-          >
-            <NavLink
-              to="/"
-              onClick={handleOpenMenu}
-              className={({ isActive }) => `
+            >
+              <NavLink
+                to="/"
+                onClick={handleOpenMenu}
+                className={({ isActive }) => `
               navigation__link
               link-hover
             ${isActive ? 'navigation__link_active' : ''
               }`}
-            >
-              Главная
-            </NavLink>
-          </li>
-          <li className="navigation__links-item">
-            <NavLink
-              to="/movies"
-              onClick={handleOpenMenu}
-              className={({ isActive }) => `
+              >
+                Главная
+              </NavLink>
+            </li>
+            <li className="navigation__links-item">
+              <NavLink
+                to="/movies"
+                onClick={handleOpenMenu}
+                className={({ isActive }) => `
               navigation__link
               link-hover
             ${isActive ? 'navigation__link_active' : ''
               }`}
-            >
-              Фильмы
-            </NavLink>
-          </li>
-          <li className="navigation__links-item">
-            <NavLink
-              to="/saved-movies"
-              onClick={handleOpenMenu}
-              className={({ isActive }) => `
+              >
+                Фильмы
+              </NavLink>
+            </li>
+            <li className="navigation__links-item">
+              <NavLink
+                to="/saved-movies"
+                onClick={handleOpenMenu}
+                className={({ isActive }) => `
               navigation__link
               link-hover
             ${isActive ? 'navigation__link_active' : ''}`}
-            >
-              Сохранённые фильмы
-            </NavLink>
-          </li>
-        </ul>
-        <NavLink
-          to="/profile"
-          onClick={handleOpenMenu}
-          className="
+              >
+                Сохранённые фильмы
+              </NavLink>
+            </li>
+          </ul>
+          <NavLink
+            to="/profile"
+            onClick={handleOpenMenu}
+            className="
                     navigation__link
                     navigation__link_type_profile
                     link-hover"
-        >
-          Аккаунт
-        </NavLink>
-      </nav>
+          >
+            Аккаунт
+          </NavLink>
+        </nav>
+      </div>
     </div>
   );
 };

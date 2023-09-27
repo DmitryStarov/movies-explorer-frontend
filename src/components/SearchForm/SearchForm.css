@@ -123,7 +123,7 @@
 
 @media screen and (max-width: 670px) {
   .search-form {
-    padding: 65px 14px 0;
+    padding: 68px 14px 0;
   }
 
   .search-form__form {
@@ -132,6 +132,7 @@
   }
 
   .search-form__input {
+    height: 44px;
     font-size: 14px;
     line-height: 1.28;
     padding: 8px 13px;
