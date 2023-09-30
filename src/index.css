@@ -1,0 +1,37 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+.page {
+  background-color: #202020;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Inter', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+.link-hover {
+  transition: opacity .3s;
+}
+
+@media screen and (hover: hover) {
+  .link-hover:hover {
+    opacity: .7;
+  }
+}
+
+.button-hover {
+  transition: opacity .3s;
+}
+
+@media screen and (hover: hover) {
+  .button-hover:hover {
+    opacity: .8;
+  }
+}
