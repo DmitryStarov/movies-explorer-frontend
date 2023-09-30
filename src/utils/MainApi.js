@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { mainApiSettings } from './constants';
 
 class MainApi {
