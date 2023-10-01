@@ -33,7 +33,9 @@ const CONFLICT_STATUS = 409;
 
 const AUTH_ERR_MESSAGE = 'Необходимо авторизироваться';
 const INVALID_AUTH_DATA_ERROR_MESSAGE = 'Неправильный логин или пароль.';
-
+const CONFLICT_EMAIL_MESSAGE = 'Этот email уже зарегестрирован';
+const INVALID_REG_DATA_MESSAGE = 'Переданы некорректные данные при регистрации';
+const REG_ERROR_MESSAGE = 'При регистрации произошла ошибка.';
 export {
   moviesApiSettings,
   mainApiSettings,
@@ -51,4 +53,7 @@ export {
   CONFLICT_STATUS,
   AUTH_ERR_MESSAGE,
   INVALID_AUTH_DATA_ERROR_MESSAGE,
+  CONFLICT_EMAIL_MESSAGE,
+  INVALID_REG_DATA_MESSAGE,
+  REG_ERROR_MESSAGE,
 };

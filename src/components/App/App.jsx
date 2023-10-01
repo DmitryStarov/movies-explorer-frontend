@@ -25,6 +25,9 @@ import {
   CONFLICT_STATUS,
   AUTH_ERR_MESSAGE,
   INVALID_AUTH_DATA_ERROR_MESSAGE,
+  CONFLICT_EMAIL_MESSAGE,
+  INVALID_REG_DATA_MESSAGE,
+  REG_ERROR_MESSAGE,
 } from '../../utils/constants';
 
 const App = () => {
@@ -32,9 +35,10 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authErrMessage, setAuthErrMessage] = useState('');
+  const [regErrMessage, setRegErrMessage] = useState('');
 
   const resetMessages = () => {
-    setRegErrorMessage('');
+    setRegErrMessage('');
     setAuthErrMessage('');
     setUpdateUserInfo({ message: '', isSuccess: true });
   };
@@ -52,6 +56,22 @@ const App = () => {
       }
     }
   };
+
+  const handleRegistration = async (data) => {
+    try {
+      await mainApi.registration(data);
+      setRegErrMessage('');
+      await handleLogin(data);
+    } catch (err) {
+      if (err === CONFLICT_STATUS) {
+        setRegErrMessage(CONFLICT_EMAIL_MESSAGE);
+      } else if (err === BAD_REQUEST_STATUS) {
+        setRegErrMessage(INVALID_REG_DATA_MESSAGE);
+      } else {
+        setRegErrMessage(REG_ERROR_MESSAGE);
+      }
+    }
+  };
   return (
     <CurrentUserContext.Provider value={currentUser}>
       {isLoading
@@ -64,7 +84,13 @@ const App = () => {
             />
             <Route
               path="/signup"
-              element={<Register requestErrorText="Что-то пошло не так..." />}
+              element={(
+                <Register
+                  onRegister={handleRegistration}
+                  requestErrorMessage={regErrMessage}
+                  resetRequestError={resetMessages}
+                />
+)}
             />
             <Route
               path="/signin"
@@ -74,7 +100,7 @@ const App = () => {
                   requestErrorMessage={authErrMessage}
                   resetRequestError={resetMessages}
                 />
-)}
+              )}
             />
             <Route
               path="/profile"

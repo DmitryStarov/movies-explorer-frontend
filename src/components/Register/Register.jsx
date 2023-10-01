@@ -1,12 +1,26 @@
 import './Register.css';
+import { useEffect } from 'react';
 import Auth from '../Auth/Auth';
 import AuthInput from '../AuthInput/AuthInput';
 import useValidator from '../../hooks/useValidator';
 
-const Register = ({ errorText }) => {
+const Register = ({
+  onRegister,
+  errorMessage,
+  resetError,
+}) => {
   const {
     inputValues, errors, isValid, handleChange,
   } = useValidator();
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onRegister(inputValues);
+  };
+
+  useEffect(() => {
+    resetError();
+  }, []);
 
   return (
     <main>
@@ -15,10 +29,11 @@ const Register = ({ errorText }) => {
         formName="sign-up"
         buttonText="Зарегистрироваться"
         isValid={isValid}
-        requestErrorText={errorText}
+        requestErrorText={errorMessage}
         paragraphText="Уже зарегистрированы?"
         paragraphLink="/signin"
         paragraphButton="Войти"
+        onSubmit={handleSubmit}
       >
         <AuthInput
           type="text"
