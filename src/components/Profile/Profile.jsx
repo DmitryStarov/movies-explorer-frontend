@@ -1,11 +1,18 @@
 import './Profile.css';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
 import Header from '../Header/Header';
 import useValidator from '../../hooks/useValidator';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
-const Profile = () => {
-  const [isEditProfile, setIsEditProfile] = useState(false);
+const Profile = ({
+  onLogout,
+  requestErrorMessage,
+  resetRequestMessage,
+  onSubmit,
+  onEdit,
+  isEditProfile,
+}) => {
+  const { name, email } = useContext(CurrentUserContext);
 
   const {
     inputValues,
@@ -13,20 +20,28 @@ const Profile = () => {
     isValid,
     handleChange,
     setInputValues,
+    setIsValid,
   } = useValidator();
 
-  const handleClickEditProfile = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
-    setIsEditProfile(!isEditProfile);
-  };
-  const navigate = useNavigate();
-  const handleLogOut = () => {
-    navigate('/', { replace: true });
+    onSubmit(inputValues);
   };
 
   useEffect(() => {
-    setInputValues({ name: 'User', email: 'test@test.com' });
+    setInputValues({ name, email });
+    onEdit(false);
+  }, [name, email]);
+
+  useEffect(() => {
+    resetRequestMessage();
   }, []);
+
+  useEffect(() => {
+    if (inputValues.name === name && inputValues.email === email) {
+      setIsValid(false);
+    }
+  }, [inputValues]);
 
   return (
     <>
@@ -34,8 +49,8 @@ const Profile = () => {
       <main>
         <section className="profile">
           <div className="profile__container">
-            <h1 className="profile__title">Привет, User!</h1>
-            <form className="profile__form" name="profile">
+            <h1 className="profile__title">{`Привет, ${name}!`}</h1>
+            <form className="profile__form" name="profile" onSubmit={handleSubmit}>
               <label className="profile__field">
                 <span className="profile__label">Имя</span>
                 <input
@@ -80,7 +95,7 @@ const Profile = () => {
             && (
               <>
                 <p className="profile__request-error">
-                  При обновлении профиля произошла ошибка.
+                  {requestErrorMessage}
                 </p>
                 <button
                   className="profile__submit-button button-hover"
@@ -97,11 +112,11 @@ const Profile = () => {
               <button
                 className="profile__edit-button button-hover"
                 type="button"
-                onClick={handleClickEditProfile}
+                onClick={() => onEdit(true)}
               >
                 {isEditProfile ? 'Сохранить' : 'Редактировать'}
               </button>
-              <button className="profile__logout button-hover" type="button" onClick={handleLogOut}>Выйти из аккаунта</button>
+              <button className="profile__logout button-hover" type="button" onClick={onLogout}>Выйти из аккаунта</button>
             </>
             )}
             </form>

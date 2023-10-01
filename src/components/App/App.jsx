@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import auth from '../../utils/Auth';
-import moviesApi from '../../utils/MoviesApi';
 import Main from '../Main/Main';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Register from '../Register/Register';
@@ -15,19 +14,15 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Preloader from '../Preloader/Preloader';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import {
-  OK_STATUS,
-  CREATED_STATUS,
   BAD_REQUEST_STATUS,
   UNAUTH_STATUS,
-  FORBIDDEN_STATUS,
-  NOT_FOUND_STATUS,
-  INTERNAL_SERVER_STATUS,
   CONFLICT_STATUS,
   AUTH_ERR_MESSAGE,
   INVALID_AUTH_DATA_ERROR_MESSAGE,
   CONFLICT_EMAIL_MESSAGE,
   INVALID_REG_DATA_MESSAGE,
   REG_ERROR_MESSAGE,
+  UPDATE_USER_ERROR_MESSAGE,
 } from '../../utils/constants';
 
 const App = () => {
@@ -36,11 +31,14 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authErrMessage, setAuthErrMessage] = useState('');
   const [regErrMessage, setRegErrMessage] = useState('');
+  const [updateErrMessage, setUpdateErrMessage] = useState('');
+  const [isEditProfile, setIsEditProfile] = useState(false);
 
+  const navigate = useNavigate();
   const resetMessages = () => {
     setRegErrMessage('');
     setAuthErrMessage('');
-    setUpdateUserInfo({ message: '', isSuccess: true });
+    setUpdateErrMessage('');
   };
 
   const handleLogin = async (data) => {
@@ -72,6 +70,26 @@ const App = () => {
       }
     }
   };
+
+  const handleLogout = async () => {
+    localStorage.clear();
+    setIsLoggedIn(false);
+    navigate('/', { replace: true });
+  };
+
+  const handleUpdateProfile = async (userInfo) => {
+    try {
+      setUpdateErrMessage('');
+      const user = await mainApi.updateUserInfo(userInfo);
+      setCurrentUser(user);
+    } catch (error) {
+      if (error === CONFLICT_STATUS) {
+        setUpdateErrMessage(CONFLICT_EMAIL_MESSAGE);
+      } else {
+        setUpdateErrMessage(UPDATE_USER_ERROR_MESSAGE);
+      }
+    }
+  };
   return (
     <CurrentUserContext.Provider value={currentUser}>
       {isLoading
@@ -90,7 +108,7 @@ const App = () => {
                   requestErrorMessage={regErrMessage}
                   resetRequestError={resetMessages}
                 />
-)}
+              )}
             />
             <Route
               path="/signin"
@@ -106,7 +124,14 @@ const App = () => {
               path="/profile"
               element={(
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
-                  <Profile />
+                  <Profile
+                    onLogout={handleLogout}
+                    requestErrorMessage={updateErrMessage}
+                    resetRequestMessage={resetMessages}
+                    onSubmit={handleUpdateProfile}
+                    onEdit={setIsEditProfile}
+                    isEditProfile={isEditProfile}
+                  />
                 </ProtectedRoute>
               )}
             />

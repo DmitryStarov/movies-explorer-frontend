@@ -36,6 +36,7 @@ const INVALID_AUTH_DATA_ERROR_MESSAGE = 'Неправильный логин и�
 const CONFLICT_EMAIL_MESSAGE = 'Этот email уже зарегестрирован';
 const INVALID_REG_DATA_MESSAGE = 'Переданы некорректные данные при регистрации';
 const REG_ERROR_MESSAGE = 'При регистрации произошла ошибка.';
+const UPDATE_USER_ERROR_MESSAGE = 'При обновлении профиля произошла ошибка.';
 export {
   moviesApiSettings,
   mainApiSettings,
@@ -56,4 +57,5 @@ export {
   CONFLICT_EMAIL_MESSAGE,
   INVALID_REG_DATA_MESSAGE,
   REG_ERROR_MESSAGE,
+  UPDATE_USER_ERROR_MESSAGE,
 };
