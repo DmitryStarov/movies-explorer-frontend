@@ -60,7 +60,7 @@ const App = () => {
 
   const handleRegistration = async (data) => {
     try {
-      await mainApi.registration(data);
+      await auth.registration(data);
       setRegErrMessage('');
       await handleLogin(data);
     } catch (err) {
@@ -137,12 +137,18 @@ const App = () => {
   useEffect(() => {
     (async () => {
       try {
-        const currentPath = pathname;
-        setIsLoading(true);
-        const user = await mainApi.getUserInfo();
-        setCurrentUser(user);
-        setIsLoggedIn(true);
-        navigate(currentPath, { replace: true });
+        const jwt = localStorage.getItem('jwt');
+        if (jwt) {
+          const dataToken = await auth.checkToken(jwt);
+          if (dataToken) {
+            const currentPath = pathname;
+            setIsLoading(true);
+            const user = await mainApi.getUserInfo();
+            setCurrentUser(user);
+            setIsLoggedIn(true);
+            navigate(currentPath, { replace: true });
+          }
+        }
       } catch (err) {
         console.log(`Error: ${err}`);
       } finally {
@@ -159,7 +165,7 @@ const App = () => {
           <Routes>
             <Route
               path="/"
-              element={<Main />}
+              element={<Main isLoggedIn={isLoggedIn} />}
             />
             <Route
               path="/signup"

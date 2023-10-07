@@ -14,7 +14,7 @@ const mainApiSettings = {
 };
 
 const authSettings = {
-  baseUrl: 'https://api.starov.nomoreparties.co',
+  baseUrl: 'http://localhost:3001',
   headers: { 'Content-Type': 'application/json' },
 };
 

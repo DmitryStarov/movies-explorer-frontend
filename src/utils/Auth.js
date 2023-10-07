@@ -18,11 +18,11 @@ class Auth {
   }
 
   // регистраци
-  registration({ email, password }) {
+  registration({ email, password, name }) {
     return this._request('/signup', {
       method: 'POST',
       headers: this._headers,
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, name }),
     });
   }
 
@@ -36,8 +36,8 @@ class Auth {
       .then((data) => {
         if (data.token) {
           localStorage.setItem('jwt', data.token);
-          // return data;
-        }
+          return data;
+        } return null;
       });
   }
 
