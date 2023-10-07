@@ -6,7 +6,7 @@ const moviesApiSettings = {
 };
 
 const mainApiSettings = {
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'http://localhost:3001',
   headers: {
     Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json',
@@ -37,6 +37,8 @@ const CONFLICT_EMAIL_MESSAGE = 'Этот email уже зарегестриров
 const INVALID_REG_DATA_MESSAGE = 'Переданы некорректные данные при регистрации';
 const REG_ERROR_MESSAGE = 'При регистрации произошла ошибка.';
 const UPDATE_USER_ERROR_MESSAGE = 'При обновлении профиля произошла ошибка.';
+
+const SHORT_FILM_DURATION = 40;
 export {
   moviesApiSettings,
   mainApiSettings,
@@ -58,4 +60,5 @@ export {
   INVALID_REG_DATA_MESSAGE,
   REG_ERROR_MESSAGE,
   UPDATE_USER_ERROR_MESSAGE,
+  SHORT_FILM_DURATION,
 };

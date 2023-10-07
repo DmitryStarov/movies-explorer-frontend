@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import {
+  Route, Routes, useNavigate, useLocation,
+} from 'react-router-dom';
 import './App.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
@@ -33,7 +35,8 @@ const App = () => {
   const [regErrMessage, setRegErrMessage] = useState('');
   const [updateErrMessage, setUpdateErrMessage] = useState('');
   const [isEditProfile, setIsEditProfile] = useState(false);
-
+  const [savedMovies, setSavedMovies] = useState([]);
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const resetMessages = () => {
     setRegErrMessage('');
@@ -90,6 +93,64 @@ const App = () => {
       }
     }
   };
+
+  const handleSaveMovie = async (movie) => {
+    try {
+      const savedMovie = await mainApi.postSavedMovie(movie);
+      setSavedMovies([...savedMovies, savedMovie]);
+    } catch (err) {
+      console.log(`Error: ${err}`);
+    }
+  };
+
+  const handleDeleteMovie = async (movieId) => {
+    try {
+      const { _id: deleteMovieId } = await mainApi.deleteSavedMovie(movieId);
+      const updatedSavedMovies = savedMovies.filter(({ _id }) => _id !== deleteMovieId);
+      setSavedMovies(updatedSavedMovies);
+    } catch (err) {
+      console.log(`Error: ${err}`);
+    }
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      (async () => {
+        try {
+          setIsLoading(true);
+          const savedUserMovies = await mainApi.getSavedMovies();
+          setSavedMovies(savedUserMovies);
+          setIsLoggedIn(true);
+        } catch (err) {
+          if (err === UNAUTH_STATUS) {
+            console.log(`Error: ${err} ${INVALID_AUTH_DATA_ERROR_MESSAGE}`);
+            return;
+          }
+          console.log(`Error: ${err}`);
+        } finally {
+          setIsLoading(false);
+        }
+      })();
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const currentPath = pathname;
+        setIsLoading(true);
+        const user = await mainApi.getUserInfo();
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        navigate(currentPath, { replace: true });
+      } catch (err) {
+        console.log(`Error: ${err}`);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, [isLoggedIn]);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       {isLoading
@@ -106,7 +167,7 @@ const App = () => {
                 <Register
                   onRegister={handleRegistration}
                   requestErrorMessage={regErrMessage}
-                  resetRequestError={resetMessages}
+                  resetError={resetMessages}
                 />
               )}
             />
@@ -116,7 +177,7 @@ const App = () => {
                 <Login
                   onLogin={handleLogin}
                   requestErrorMessage={authErrMessage}
-                  resetRequestError={resetMessages}
+                  resetError={resetMessages}
                 />
               )}
             />
@@ -139,7 +200,12 @@ const App = () => {
               path="/movies"
               element={(
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
-                  <Movies movies={testMovies} />
+                  <Movies
+                    isLoggedIn={isLoggedIn}
+                    onSaveMovies={handleSaveMovie}
+                    onDeleteMovie={handleDeleteMovie}
+                    savedMovies={savedMovies}
+                  />
                 </ProtectedRoute>
               )}
             />
@@ -147,7 +213,7 @@ const App = () => {
               path="/saved-movies"
               element={(
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
-                  <SavedMovies movies={testMovies} />
+                  <SavedMovies movies={savedMovies} />
                 </ProtectedRoute>
               )}
             />

@@ -4,7 +4,6 @@ import {
   MOVIES_PER_PAGE_1280,
   MOVIES_PER_PAGE_320,
   MOVIES_PER_PAGE_768,
-  testMovies,
 } from '../../utils/constants';
 import Card from '../Card/Card';
 
@@ -44,7 +43,7 @@ const CardsList = ({ movies, isSavedMovies }) => {
     <section
       className={`card-list ${isSavedMovies ? 'card-list_type_saved-movies' : ''}`}
     >
-      {testMovies.length !== 0
+      {movies.length !== 0
         ? (
           <ul className="card-list__container">
             {currentMovies.map(movie => (
@@ -53,7 +52,7 @@ const CardsList = ({ movies, isSavedMovies }) => {
         )
 
         : <p className="card-list__title">Ничего не найдено</p>}
-      {testMovies.length > currentPage * perPage
+      {movies.length > currentPage * perPage
         && !isSavedMovies
         && (
           <button
