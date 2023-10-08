@@ -33,7 +33,7 @@ const Movies = ({
     setIsLoading(true);
     if (!allMovies.length) {
       try {
-        const movies = await moviesApi.getInitialMovies();
+        const movies = await moviesApi.getMovies();
         localStorage.setItem('movies', JSON.stringify(movies));
         handleFilterMovies(movies, request, isShort);
       } catch (err) {

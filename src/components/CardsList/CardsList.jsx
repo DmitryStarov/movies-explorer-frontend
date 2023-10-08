@@ -47,7 +47,12 @@ const CardsList = ({ movies, isSavedMovies }) => {
         ? (
           <ul className="card-list__container">
             {currentMovies.map(movie => (
-              <Card movie={movie} key={movie.movieId} isSavedMovies={isSavedMovies} />))}
+              <Card
+                movie={movie}
+                key={isSavedMovies ? movie._id : movie.id}
+                isSavedMovies={isSavedMovies}
+              />
+            ))}
           </ul>
         )
 

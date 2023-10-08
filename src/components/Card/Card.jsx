@@ -2,13 +2,18 @@ import './Card.css';
 import { useState } from 'react';
 
 const MoviesCard = ({
-  movie: {
-    duration, trailerLink, image, nameRU,
-  },
+  movie,
   isSavedMovies,
 }) => {
-  const [isImageError, setIsImageError] = useState(false);
+  const {
+    duration,
+    trailerLink,
+    image,
+    nameRU,
+  } = movie;
+
   const [buttonText, setButtontext] = useState('Сохранить');
+  const movieImage = isSavedMovies ? image : `https://api.nomoreparties.co/${image.url}`;
 
   const handleClick = (evt) => {
     evt.target.classList.toggle('card__save-button_active');
@@ -20,10 +25,6 @@ const MoviesCard = ({
     const hours = Math.floor(duration / 60);
     return `${hours}ч ${minutes}м`;
   }
-
-  const handleImageError = () => {
-    setIsImageError(true);
-  };
 
   return (
     <li className="card">
@@ -47,10 +48,9 @@ const MoviesCard = ({
         )}
       <a href={trailerLink} className="card__link" target="_blank" rel="noreferrer">
         <img
-          className={`card__image ${isImageError ? 'card__image_type_error' : ''}`}
-          src={image}
+          className="card__image"
+          src={movieImage}
           alt={nameRU}
-          onError={handleImageError}
         />
       </a>
       <div className={`card__description ${isSavedMovies ? 'card__description_type_saved-movies' : ''}`}>
