@@ -45,7 +45,7 @@ class MainApi {
   }
 
   postSavedMovie(movie) {
-    return this._request(this._moviesEndpoint, {
+    return this._request('/movies', {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -65,7 +65,7 @@ class MainApi {
   }
 
   deleteSavedMovie(movieId) {
-    return this._request(`${this._moviesEndpoint}/${movieId}`, {
+    return this._request(`/movies/${movieId}`, {
       method: 'DELETE',
       headers: this._headers,
     });

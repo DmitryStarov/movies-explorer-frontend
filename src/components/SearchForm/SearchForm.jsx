@@ -18,7 +18,7 @@ const SearchForm = ({ onSubmit, onChange, isShortMovie }) => {
 
   useEffect(() => {
     if (!isSavedMovies) {
-      const savedSearch = localStorage.getItem('req');
+      const savedSearch = localStorage.getItem('request');
       if (savedSearch) setInputValues({ search: savedSearch });
     }
   }, []);
