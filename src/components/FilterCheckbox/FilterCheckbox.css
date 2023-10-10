@@ -23,7 +23,7 @@
   cursor: pointer;
 }
 
-.filter-checkbox__slider_active {
+.filter-checkbox__checkbox:checked + .filter-checkbox__slider {
   background-color: #2BE080;
 }
 
@@ -40,7 +40,7 @@
   transition: transform .3s;
 }
 
-.filter-checkbox__slider_active::before {
+.filter-checkbox__checkbox:checked + .filter-checkbox__slider::before {
   background-color: #ffffff;
   transform: translateX(20px);
 }
