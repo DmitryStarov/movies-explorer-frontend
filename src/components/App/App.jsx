@@ -219,7 +219,11 @@ const App = () => {
               path="/saved-movies"
               element={(
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
-                  <SavedMovies movies={savedMovies} />
+                  <SavedMovies
+                    savedMovies={savedMovies}
+                    isLoggedIn={isLoggedIn}
+                    onDeleteMovie={handleDeleteMovie}
+                  />
                 </ProtectedRoute>
               )}
             />

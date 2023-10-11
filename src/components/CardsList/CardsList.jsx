@@ -36,7 +36,7 @@ const CardsList = ({ movies, savedMovies, onClick }) => {
   const handleIsSaved = (movie) => {
     if (!isSavedMovies) {
       const savedMovie = savedMovies.find(film => film.movieId === movie.id);
-      return !!savedMovie;
+      return savedMovie;
     }
     return true;
   };
