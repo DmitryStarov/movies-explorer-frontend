@@ -83,7 +83,7 @@ const App = () => {
   const handleUpdateProfile = async (userInfo) => {
     try {
       setUpdateErrMessage('');
-      const user = await mainApi.updateUserInfo(userInfo);
+      const user = await mainApi.patchProfile(userInfo);
       setCurrentUser(user);
     } catch (error) {
       if (error === CONFLICT_STATUS) {
