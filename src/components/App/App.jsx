@@ -49,6 +49,7 @@ const App = () => {
       await auth.autirization(data);
       setIsLoggedIn(true);
       setAuthErrMessage('');
+      navigate('/movies', { replace: true });
     } catch (err) {
       if (err === UNAUTH_STATUS) {
         setAuthErrMessage(INVALID_AUTH_DATA_ERROR_MESSAGE);
