@@ -8,7 +8,9 @@ import {
 } from '../../utils/constants';
 import Card from '../Card/Card';
 
-const CardsList = ({ movies, savedMovies, onClick }) => {
+const CardsList = ({
+  movies, savedMovies, onClick, message,
+}) => {
   const [currentMovies, setCurrentMovies] = useState([]);
   const [perPage, setPerPage] = useState(Number);
   const [step, setStep] = useState(Number);
@@ -76,7 +78,7 @@ const CardsList = ({ movies, savedMovies, onClick }) => {
           </ul>
         )
 
-        : <p className="card-list__title">Ничего не найдено</p>}
+        : <p className="card-list__title">{message || 'Введите поисковый запрос'}</p>}
       {movies.length > currentPage * perPage
         && !isSavedMovies
         && (

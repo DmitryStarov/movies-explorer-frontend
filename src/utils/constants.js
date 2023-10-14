@@ -37,6 +37,8 @@ const CONFLICT_EMAIL_MESSAGE = 'Этот email уже зарегестриров
 const INVALID_REG_DATA_MESSAGE = 'Переданы некорректные данные при регистрации';
 const REG_ERROR_MESSAGE = 'При регистрации произошла ошибка.';
 const UPDATE_USER_ERROR_MESSAGE = 'При обновлении профиля произошла ошибка.';
+const SEARCH_ERROR_MESSAGE = 'При выполнении запроса произошла ошибка.';
+const NOT_FOUND_MESSAGE = 'Ничего не найдено';
 
 const SHORT_FILM_DURATION = 40;
 export {
@@ -61,4 +63,6 @@ export {
   REG_ERROR_MESSAGE,
   UPDATE_USER_ERROR_MESSAGE,
   SHORT_FILM_DURATION,
+  SEARCH_ERROR_MESSAGE,
+  NOT_FOUND_MESSAGE,
 };

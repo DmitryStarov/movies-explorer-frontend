@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 import CardsList from '../CardsList/CardsList';
 import moviesApi from '../../utils/MoviesApi';
 import useMoviesFilter from '../../hooks/useMoviesFilter';
+import { SEARCH_ERROR_MESSAGE, NOT_FOUND_MESSAGE } from '../../utils/constants';
 
 const Movies = ({
   isLoggedIn,
@@ -20,10 +21,14 @@ const Movies = ({
   const [isShortMovie, setIsShortMovie] = useState(savedCheckbox);
   const allMovies = JSON.parse(localStorage.getItem('movies')) ?? [];
   const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleFilterMovies = (movies, req, isShort) => {
     const filteredFilms = filterMovies(movies, req);
     localStorage.setItem('filteredMovies', JSON.stringify(filteredFilms));
+    if (!filteredFilms.length) {
+      setMessage(NOT_FOUND_MESSAGE);
+    }
     setFilteredMovies(isShort
       ? filterShortMovies(filteredFilms)
       : filteredFilms);
@@ -31,6 +36,7 @@ const Movies = ({
 
   const handleSearchMovies = async (request, isShort) => {
     setIsLoading(true);
+    setMessage('');
     if (!allMovies.length) {
       try {
         const movies = await moviesApi.getMovies();
@@ -39,6 +45,7 @@ const Movies = ({
       } catch (err) {
         console.log(`Error: ${err}`);
         setIsLoading(false);
+        setMessage(SEARCH_ERROR_MESSAGE);
       }
     } else {
       handleFilterMovies(allMovies, request, isShort);
@@ -71,6 +78,8 @@ const Movies = ({
         setFilteredMovies(isShortMovie
           ? filterShortMovies(defaultMovies)
           : defaultMovies);
+      } else {
+        setMessage(NOT_FOUND_MESSAGE);
       }
     }
     setIsLoading(false);
@@ -92,6 +101,7 @@ const Movies = ({
               movies={filteredMovies}
               onClick={handleClickMovie}
               savedMovies={savedMovies}
+              message={message}
             />
           )}
       </main>

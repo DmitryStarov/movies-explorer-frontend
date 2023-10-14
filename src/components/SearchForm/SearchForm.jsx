@@ -45,6 +45,10 @@ const SearchForm = ({ onSubmit, onChange, isShortMovie }) => {
           />
         </div>
         <FilterCheckbox onChange={onChange} value={isShortMovie} />
+        <span className="search-form__error">
+          {/* из-за такой записи лезет Warning. Разобраться как исправить */}
+          {errors.search}
+        </span>
       </form>
     </div>
   );

@@ -5,6 +5,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import Footer from '../Footer/Footer';
 import CardList from '../CardsList/CardsList';
 import useMoviesFilter from '../../hooks/useMoviesFilter';
+import { SEARCH_ERROR_MESSAGE, NOT_FOUND_MESSAGE } from '../../utils/constants';
 
 const Movies = ({ savedMovies, isLoggedIn, onDeleteMovie }) => {
   const [isShortMovie, setIsShortMovie] = useState(false);
@@ -17,12 +18,12 @@ const Movies = ({ savedMovies, isLoggedIn, onDeleteMovie }) => {
     if (savedMovies) {
       const filteredFilms = filterMovies(savedMovies, requestText, isShortMovie);
       if (filteredFilms.length === 0) {
-        setMessage('ничего не найдено');
+        setMessage(NOT_FOUND_MESSAGE);
       }
       setFilteredMovies(filteredFilms);
       return;
     }
-    setMessage('хреновый запрос');
+    setMessage(SEARCH_ERROR_MESSAGE);
   }, [isShortMovie, requestText, savedMovies]);
 
   const handleDeleteMovie = ({ _id: movieId }) => {
@@ -50,7 +51,7 @@ const Movies = ({ savedMovies, isLoggedIn, onDeleteMovie }) => {
           onChange={handleCheckbox}
           isShortMovie={isShortMovie}
         />
-        <CardList movies={filteredMovies} messageText={message} onClick={handleDeleteMovie} />
+        <CardList movies={filteredMovies} message={message} onClick={handleDeleteMovie} />
       </main>
       <Footer />
     </>
