@@ -25,16 +25,16 @@ const SearchForm = ({ onSubmit, onChange, isShortMovie }) => {
   return (
   // здест div по совету валидатора, т.к. нет заголовков 2-6 уровня
     <div className="search-form">
-      <form className="search-form__form" name="search" onSubmit={handleSearch} noValidate>
+      <form className="search-form__form" name="searchMovie" onSubmit={handleSearch} noValidate>
         <div className="search-form__search-bar">
           <input
-            className={`search-form__input ${errors.search ? 'search-form__input_type_error' : ''}`}
+            className={`search-form__input ${errors.searchMovie ? 'search-form__input_type_error' : ''}`}
             type="text"
-            name="search"
+            name="searchMovie"
             placeholder="Фильм"
             autoComplete="off"
             required
-            value={inputValues.search ?? ''}
+            value={inputValues.searchMovie ?? ''}
             onChange={handleChange}
           />
           <button
@@ -46,8 +46,7 @@ const SearchForm = ({ onSubmit, onChange, isShortMovie }) => {
         </div>
         <FilterCheckbox onChange={onChange} value={isShortMovie} />
         <span className="search-form__error">
-          {/* из-за такой записи лезет Warning. Разобраться как исправить */}
-          {errors.search}
+          {errors.searchMovie}
         </span>
       </form>
     </div>
