@@ -13,13 +13,13 @@ const SearchForm = ({ onSubmit, onChange, isShortMovie }) => {
 
   const handleSearch = (evt) => {
     evt.preventDefault();
-    onSubmit(inputValues.search, isShortMovie);
+    onSubmit(inputValues.searchMovie, isShortMovie);
   };
 
   useEffect(() => {
     if (!isSavedMovies) {
       const savedSearch = localStorage.getItem('request');
-      if (savedSearch) setInputValues({ search: savedSearch });
+      if (savedSearch) setInputValues({ searchMovie: savedSearch });
     }
   }, []);
   return (
