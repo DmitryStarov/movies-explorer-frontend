@@ -6,7 +6,7 @@ const moviesApiSettings = {
 };
 
 const mainApiSettings = {
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'api.dstarov.nomoreparties.co:3000',
   headers: {
     Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ const mainApiSettings = {
 };
 
 const authSettings = {
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'api.dstarov.nomoreparties.co:3000',
   headers: { 'Content-Type': 'application/json' },
 };
 
