@@ -1,7 +1,7 @@
 # Movies Explorer (фронтенд)
-
+#### [Ссылка не pull-request](https://github.com/DmitryStarov/movies-explorer-frontend/pull/2)
 #### [Ссылка не репозиторий](https://github.com/DmitryStarov/movies-explorer-frontend)
-
+#### [Ссылка не деплой](https://dstarov.nomoreparties.co/)
 #### Макет dark-2
 
 ## Стек
