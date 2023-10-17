@@ -3,6 +3,7 @@ import { useContext, useEffect } from 'react';
 import Header from '../Header/Header';
 import useValidator from '../../hooks/useValidator';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { EMAIL_REG } from '../../utils/constants';
 
 const Profile = ({
   onLogout,
@@ -83,6 +84,7 @@ const Profile = ({
                   onChange={handleChange}
                   value={inputValues.email || ''}
                   autoComplete="off"
+                  pattern={EMAIL_REG}
                   disabled={!isEditProfile}
                 />
                 <span

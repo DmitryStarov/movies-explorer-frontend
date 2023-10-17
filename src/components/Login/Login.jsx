@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Auth from '../Auth/Auth';
 import useValidator from '../../hooks/useValidator';
 import AuthInput from '../AuthInput/AuthInput';
+import { EMAIL_REG } from '../../utils/constants';
 
 const Login = ({
   onLogin,
@@ -37,12 +38,12 @@ const Login = ({
         <AuthInput
           type="email"
           placeholder="E-mail"
-          label
           name="email"
           inputValue={inputValues.email}
           errorMessage={errors.email}
           placeInput="auth"
           handleChange={handleChange}
+          pattern={EMAIL_REG}
           required
         />
         <AuthInput

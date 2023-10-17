@@ -43,6 +43,7 @@ const SEARCH_ERROR_MESSAGE = 'При выполнении запроса про�
 const NOT_FOUND_MESSAGE = 'Ничего не найдено';
 
 const SHORT_FILM_DURATION = 40;
+const EMAIL_REG = '^[a-zA-Z0-9+_.\\-]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]{2,4}$';
 export {
   moviesApiSettings,
   mainApiSettings,
@@ -67,4 +68,5 @@ export {
   SHORT_FILM_DURATION,
   SEARCH_ERROR_MESSAGE,
   NOT_FOUND_MESSAGE,
+  EMAIL_REG,
 };
