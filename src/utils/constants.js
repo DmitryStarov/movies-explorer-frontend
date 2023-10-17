@@ -43,6 +43,13 @@ const SEARCH_ERROR_MESSAGE = 'При выполнении запроса про�
 const NOT_FOUND_MESSAGE = 'Ничего не найдено';
 const UPDATE_USER_MESSAGE = 'Данные успешно обновлены.';
 
+const BUTTON_REG_TEXT = 'Зарегистрироваться';
+const BUTTON_REG_BLOCKED_TEXT = 'Регистрация...';
+const BUTTON_SAVE_TEXT = 'Сохранить';
+const BUTTON_SAVE_BLOCKED_TEXT = 'Сохранение...';
+const BUTTON_AUTH_TEXT = 'Войти';
+const BUTTON_AUTH_BLOCKED_TEXT = 'Вход...';
+
 const SHORT_FILM_DURATION = 40;
 const EMAIL_REG = '^[a-zA-Z0-9+_.\\-]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]{2,4}$';
 export {
@@ -71,4 +78,10 @@ export {
   NOT_FOUND_MESSAGE,
   UPDATE_USER_MESSAGE,
   EMAIL_REG,
+  BUTTON_REG_TEXT,
+  BUTTON_REG_BLOCKED_TEXT,
+  BUTTON_SAVE_TEXT,
+  BUTTON_SAVE_BLOCKED_TEXT,
+  BUTTON_AUTH_TEXT,
+  BUTTON_AUTH_BLOCKED_TEXT,
 };

@@ -9,6 +9,7 @@ const Login = ({
   onLogin,
   errorMessage,
   resetError,
+  buttonState,
 }) => {
   const {
     inputValues, errors, isValid, handleChange,
@@ -34,6 +35,7 @@ const Login = ({
         paragraphLink="/signup"
         paragraphButton="Регистрация"
         onSubmit={handleSubmit}
+        buttonState={buttonState}
       >
         <AuthInput
           type="email"

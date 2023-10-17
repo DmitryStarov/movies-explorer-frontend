@@ -26,6 +26,12 @@ import {
   REG_ERROR_MESSAGE,
   UPDATE_USER_ERROR_MESSAGE,
   UPDATE_USER_MESSAGE,
+  BUTTON_REG_TEXT,
+  BUTTON_REG_BLOCKED_TEXT,
+  BUTTON_SAVE_TEXT,
+  BUTTON_SAVE_BLOCKED_TEXT,
+  BUTTON_AUTH_TEXT,
+  BUTTON_AUTH_BLOCKED_TEXT,
 } from '../../utils/constants';
 
 const App = () => {
@@ -44,9 +50,22 @@ const App = () => {
     setAuthErrMessage('');
     setUpdateUserInfo({ message: '', isSuccess: true });
   };
+  const [buttonLogin, setButtonLogin] = useState({
+    buttonText: BUTTON_AUTH_TEXT,
+    block: false,
+  });
+  const [buttonRegister, setButtonRegister] = useState({
+    buttonText: BUTTON_REG_TEXT,
+    block: false,
+  });
+  const [buttonUpdateProfile, setButtonUpdateProfile] = useState({
+    buttonText: BUTTON_SAVE_TEXT,
+    block: false,
+  });
 
   const handleLogin = async (data) => {
     try {
+      setButtonLogin({ buttonText: BUTTON_AUTH_BLOCKED_TEXT, block: true });
       await auth.autirization(data);
       setIsLoggedIn(true);
       setAuthErrMessage('');
@@ -57,11 +76,14 @@ const App = () => {
       } else {
         setAuthErrMessage(AUTH_ERR_MESSAGE);
       }
+    } finally {
+      setButtonLogin({ buttonText: BUTTON_AUTH_TEXT, block: false });
     }
   };
 
   const handleRegistration = async (data) => {
     try {
+      setButtonRegister({ buttonText: BUTTON_REG_BLOCKED_TEXT, block: true });
       await auth.registration(data);
       setRegErrMessage('');
       await handleLogin(data);
@@ -73,6 +95,8 @@ const App = () => {
       } else {
         setRegErrMessage(REG_ERROR_MESSAGE);
       }
+    } finally {
+      setButtonRegister({ buttonText: BUTTON_REG_TEXT, block: false });
     }
   };
 
@@ -84,6 +108,7 @@ const App = () => {
 
   const handleUpdateProfile = async (userInfo) => {
     try {
+      setButtonUpdateProfile({ buttonText: BUTTON_SAVE_BLOCKED_TEXT, block: true });
       setUpdateUserInfo({ message: '', isSuccess: true });
       const user = await mainApi.patchProfile(userInfo);
       setCurrentUser(user);
@@ -94,6 +119,8 @@ const App = () => {
       } else {
         setUpdateUserInfo({ message: UPDATE_USER_ERROR_MESSAGE, isSuccess: false });
       }
+    } finally {
+      setButtonUpdateProfile({ buttonText: BUTTON_SAVE_TEXT, block: false });
     }
   };
 
@@ -178,6 +205,7 @@ const App = () => {
                     onRegister={handleRegistration}
                     errorMessage={regErrMessage}
                     resetError={resetMessages}
+                    buttonState={buttonRegister}
                   />
                 )}
             />
@@ -189,6 +217,7 @@ const App = () => {
                     onLogin={handleLogin}
                     errorMessage={authErrMessage}
                     resetError={resetMessages}
+                    buttonState={buttonLogin}
                   />
                 )}
             />
@@ -203,6 +232,7 @@ const App = () => {
                     onEdit={setIsEditProfile}
                     isEditProfile={isEditProfile}
                     requestStatus={updateUserInfo}
+                    buttonState={buttonUpdateProfile}
                   />
                 </ProtectedRoute>
               )}

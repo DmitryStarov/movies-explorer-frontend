@@ -9,6 +9,7 @@ const Register = ({
   onRegister,
   errorMessage,
   resetError,
+  buttonState,
 }) => {
   const {
     inputValues, errors, isValid, handleChange,
@@ -35,6 +36,7 @@ const Register = ({
         paragraphLink="/signin"
         paragraphButton="Войти"
         onSubmit={handleSubmit}
+        buttonState={buttonState}
       >
         <AuthInput
           type="text"

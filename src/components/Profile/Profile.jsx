@@ -12,6 +12,7 @@ const Profile = ({
   onSubmit,
   onEdit,
   isEditProfile,
+  buttonState: { buttonText, block },
 }) => {
   const { name, email } = useContext(CurrentUserContext);
 
@@ -101,9 +102,9 @@ const Profile = ({
               <button
                 className="profile__submit-button button-hover"
                 type="submit"
-                disabled={!isValid}
+                disabled={!isValid || block}
               >
-                  {isEditProfile ? 'Сохранить' : 'Редактировать'}
+                  {buttonText}
               </button>
             )}
               {!isEditProfile

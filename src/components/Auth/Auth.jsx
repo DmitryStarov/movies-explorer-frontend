@@ -5,7 +5,6 @@ import logo from '../../images/logo.svg';
 const Authentication = ({
   title,
   formName,
-  buttonText,
   children,
   errorText,
   paragraphText,
@@ -13,6 +12,7 @@ const Authentication = ({
   paragraphButton,
   isValid,
   onSubmit,
+  buttonState: { buttonText, block },
 }) => (
   <section className="auth">
     <div className="auth__container">
@@ -25,7 +25,7 @@ const Authentication = ({
         <p className="auth__error">{errorText}</p>
         <button
           className="auth__submit-button button-hover"
-          disabled={!isValid}
+          disabled={!isValid || block}
           type="submit"
         >
           {buttonText}
