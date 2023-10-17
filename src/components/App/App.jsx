@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Route, Routes, useNavigate, useLocation,
+  Route, Routes, useNavigate, useLocation, Navigate,
 } from 'react-router-dom';
 import './App.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -172,23 +172,25 @@ const App = () => {
             />
             <Route
               path="/signup"
-              element={(
-                <Register
-                  onRegister={handleRegistration}
-                  requestErrorMessage={regErrMessage}
-                  resetError={resetMessages}
-                />
-              )}
+              element={isLoggedIn ? <Navigate to="/movies" replace />
+                : (
+                  <Register
+                    onRegister={handleRegistration}
+                    requestErrorMessage={regErrMessage}
+                    resetError={resetMessages}
+                  />
+                )}
             />
             <Route
               path="/signin"
-              element={(
-                <Login
-                  onLogin={handleLogin}
-                  requestErrorMessage={authErrMessage}
-                  resetError={resetMessages}
-                />
-              )}
+              element={isLoggedIn ? <Navigate to="/movies" replace />
+                : (
+                  <Login
+                    onLogin={handleLogin}
+                    requestErrorMessage={authErrMessage}
+                    resetError={resetMessages}
+                  />
+                )}
             />
             <Route
               path="/profile"
