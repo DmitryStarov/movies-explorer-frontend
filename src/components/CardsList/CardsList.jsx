@@ -19,15 +19,15 @@ const CardsList = ({
   const isSavedMovies = pathname === '/saved-movies';
 
   const checkWindowSize = () => {
-    if (window.innerWidth >= 1280) {
-      setPerPage(MOVIES_PER_PAGE_1280);
-      setStep(3);
-    } else if (window.innerWidth >= 768) {
-      setPerPage(MOVIES_PER_PAGE_768);
-      setStep(2);
+    if (window.innerWidth >= MOVIES_PER_PAGE_1280.breakPoint) {
+      setPerPage(MOVIES_PER_PAGE_1280.initial);
+      setStep(MOVIES_PER_PAGE_1280.step);
+    } else if (window.innerWidth >= MOVIES_PER_PAGE_768.breakPoint) {
+      setPerPage(MOVIES_PER_PAGE_768.initial);
+      setStep(MOVIES_PER_PAGE_768.step);
     } else {
-      setPerPage(MOVIES_PER_PAGE_320);
-      setStep(2);
+      setPerPage(MOVIES_PER_PAGE_320.initial);
+      setStep(MOVIES_PER_PAGE_320.step);
     }
   };
 

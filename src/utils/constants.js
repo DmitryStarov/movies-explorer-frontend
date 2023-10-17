@@ -20,9 +20,9 @@ const authSettings = {
   headers: { 'Content-Type': 'application/json' },
 };
 
-const MOVIES_PER_PAGE_1280 = 12;
-const MOVIES_PER_PAGE_768 = 8;
-const MOVIES_PER_PAGE_320 = 5;
+const MOVIES_PER_PAGE_1280 = { initial: 12, step: 3, breakPoint: 1280 };
+const MOVIES_PER_PAGE_768 = { initial: 8, step: 2, breakPoint: 768 };
+const MOVIES_PER_PAGE_320 = { initial: 5, step: 2, breakPoint: 320 };
 
 const OK_STATUS = 200;
 const CREATED_STATUS = 201;
