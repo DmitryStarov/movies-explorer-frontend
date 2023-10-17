@@ -79,7 +79,7 @@ const CardsList = ({
         )
 
         : <p className="card-list__title">{message || 'Введите поисковый запрос'}</p>}
-      {movies.length > currentPage * perPage
+      {movies.length > perPage + currentPage * step
         && !isSavedMovies
         && (
           <button
