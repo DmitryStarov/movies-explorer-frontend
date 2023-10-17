@@ -176,7 +176,7 @@ const App = () => {
                 : (
                   <Register
                     onRegister={handleRegistration}
-                    requestErrorMessage={regErrMessage}
+                    errorMessage={regErrMessage}
                     resetError={resetMessages}
                   />
                 )}
@@ -187,7 +187,7 @@ const App = () => {
                 : (
                   <Login
                     onLogin={handleLogin}
-                    requestErrorMessage={authErrMessage}
+                    errorMessage={authErrMessage}
                     resetError={resetMessages}
                   />
                 )}
