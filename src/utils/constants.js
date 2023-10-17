@@ -41,6 +41,7 @@ const REG_ERROR_MESSAGE = 'При регистрации произошла ош
 const UPDATE_USER_ERROR_MESSAGE = 'При обновлении профиля произошла ошибка.';
 const SEARCH_ERROR_MESSAGE = 'При выполнении запроса произошла ошибка.';
 const NOT_FOUND_MESSAGE = 'Ничего не найдено';
+const UPDATE_USER_MESSAGE = 'Данные успешно обновлены.';
 
 const SHORT_FILM_DURATION = 40;
 const EMAIL_REG = '^[a-zA-Z0-9+_.\\-]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]{2,4}$';
@@ -68,5 +69,6 @@ export {
   SHORT_FILM_DURATION,
   SEARCH_ERROR_MESSAGE,
   NOT_FOUND_MESSAGE,
+  UPDATE_USER_MESSAGE,
   EMAIL_REG,
 };

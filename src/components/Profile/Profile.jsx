@@ -7,7 +7,7 @@ import { EMAIL_REG } from '../../utils/constants';
 
 const Profile = ({
   onLogout,
-  requestErrorMessage,
+  requestStatus: { message, isSuccess },
   resetRequestMessage,
   onSubmit,
   onEdit,
@@ -93,20 +93,18 @@ const Profile = ({
                   {errors.email}
                 </span>
               </label>
+              <p className={`profile__request-message ${!isSuccess ? 'profile__request-message_type_error' : ''}`}>
+                {message}
+              </p>
               {isEditProfile
             && (
-              <>
-                <p className="profile__request-error">
-                  {requestErrorMessage}
-                </p>
-                <button
-                  className="profile__submit-button button-hover"
-                  type="submit"
-                  disabled={!isValid}
-                >
+              <button
+                className="profile__submit-button button-hover"
+                type="submit"
+                disabled={!isValid}
+              >
                   {isEditProfile ? 'Сохранить' : 'Редактировать'}
-                </button>
-              </>
+              </button>
             )}
               {!isEditProfile
             && (

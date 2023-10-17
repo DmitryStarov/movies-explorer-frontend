@@ -25,6 +25,7 @@ import {
   INVALID_REG_DATA_MESSAGE,
   REG_ERROR_MESSAGE,
   UPDATE_USER_ERROR_MESSAGE,
+  UPDATE_USER_MESSAGE,
 } from '../../utils/constants';
 
 const App = () => {
@@ -33,15 +34,15 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authErrMessage, setAuthErrMessage] = useState('');
   const [regErrMessage, setRegErrMessage] = useState('');
-  const [updateErrMessage, setUpdateErrMessage] = useState('');
   const [isEditProfile, setIsEditProfile] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [updateUserInfo, setUpdateUserInfo] = useState({ message: '', isSuccess: true });
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const resetMessages = () => {
     setRegErrMessage('');
     setAuthErrMessage('');
-    setUpdateErrMessage('');
+    setUpdateUserInfo({ message: '', isSuccess: true });
   };
 
   const handleLogin = async (data) => {
@@ -83,14 +84,15 @@ const App = () => {
 
   const handleUpdateProfile = async (userInfo) => {
     try {
-      setUpdateErrMessage('');
+      setUpdateUserInfo({ message: '', isSuccess: true });
       const user = await mainApi.patchProfile(userInfo);
       setCurrentUser(user);
+      setUpdateUserInfo({ message: UPDATE_USER_MESSAGE, isSuccess: true });
     } catch (error) {
       if (error === CONFLICT_STATUS) {
-        setUpdateErrMessage(CONFLICT_EMAIL_MESSAGE);
+        setUpdateUserInfo({ message: CONFLICT_EMAIL_MESSAGE, isSuccess: false });
       } else {
-        setUpdateErrMessage(UPDATE_USER_ERROR_MESSAGE);
+        setUpdateUserInfo({ message: UPDATE_USER_ERROR_MESSAGE, isSuccess: false });
       }
     }
   };
@@ -194,11 +196,11 @@ const App = () => {
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <Profile
                     onLogout={handleLogout}
-                    requestErrorMessage={updateErrMessage}
                     resetRequestMessage={resetMessages}
                     onSubmit={handleUpdateProfile}
                     onEdit={setIsEditProfile}
                     isEditProfile={isEditProfile}
+                    requestStatus={updateUserInfo}
                   />
                 </ProtectedRoute>
               )}
