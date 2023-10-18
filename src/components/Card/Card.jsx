@@ -1,18 +1,22 @@
 import './Card.css';
-import { useState } from 'react';
 
 const MoviesCard = ({
-  movie: {
-    duration, trailerLink, image, nameRU,
-  },
+  movie,
+  onClick,
   isSavedMovies,
+  isSaved,
 }) => {
-  const [isImageError, setIsImageError] = useState(false);
-  const [buttonText, setButtontext] = useState('Сохранить');
+  const {
+    duration,
+    trailerLink,
+    image,
+    nameRU,
+  } = movie;
 
-  const handleClick = (evt) => {
-    evt.target.classList.toggle('card__save-button_active');
-    if (buttonText === '') { setButtontext('Сохранить'); } else { setButtontext(''); }
+  const movieImage = isSavedMovies ? image : `https://api.nomoreparties.co/${image.url}`;
+
+  const handleClick = () => {
+    onClick(movie);
   };
 
   function convertDuration() {
@@ -21,36 +25,31 @@ const MoviesCard = ({
     return `${hours}ч ${minutes}м`;
   }
 
-  const handleImageError = () => {
-    setIsImageError(true);
-  };
-
   return (
-    <li className="card">
+    <li className={`card ${isSavedMovies ? 'card__type_saved-movies' : ''}`}>
       {isSavedMovies
         ? (
           <button
             className="card__delete-button button-hover"
             type="button"
-            aria-label="Сохранить"
+            aria-label="Удалить"
+            onClick={handleClick}
           />
         )
         : (
           <button
-            className="card__save-button button-hover"
+            className={`card__save-button ${isSaved ? 'card__save-button_active' : ''} button-hover`}
             type="button"
             aria-label="Сохранить"
             onClick={handleClick}
-          >
-            {buttonText}
-          </button>
+          />
+
         )}
       <a href={trailerLink} className="card__link" target="_blank" rel="noreferrer">
         <img
-          className={`card__image ${isImageError ? 'card__image_type_error' : ''}`}
-          src={image}
+          className="card__image"
+          src={movieImage}
           alt={nameRU}
-          onError={handleImageError}
         />
       </a>
       <div className={`card__description ${isSavedMovies ? 'card__description_type_saved-movies' : ''}`}>

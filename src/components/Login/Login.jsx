@@ -1,13 +1,28 @@
 import './Login.css';
+import { useEffect } from 'react';
 import Auth from '../Auth/Auth';
 import useValidator from '../../hooks/useValidator';
 import AuthInput from '../AuthInput/AuthInput';
+import { EMAIL_REG } from '../../utils/constants';
 
-const Login = ({ errorText }) => {
+const Login = ({
+  onLogin,
+  errorMessage,
+  resetError,
+  buttonState,
+}) => {
   const {
     inputValues, errors, isValid, handleChange,
   } = useValidator();
 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onLogin(inputValues);
+  };
+
+  useEffect(() => {
+    resetError();
+  }, []);
   return (
     <main>
       <Auth
@@ -15,20 +30,22 @@ const Login = ({ errorText }) => {
         formName="sign-in"
         buttonText="Войти"
         isValid={isValid}
-        requestErrorText={errorText}
+        errorText={errorMessage}
         paragraphText="Ещё не зарегистрированы?"
         paragraphLink="/signup"
         paragraphButton="Регистрация"
+        onSubmit={handleSubmit}
+        buttonState={buttonState}
       >
         <AuthInput
           type="email"
           placeholder="E-mail"
-          label
           name="email"
           inputValue={inputValues.email}
           errorMessage={errors.email}
           placeInput="auth"
           handleChange={handleChange}
+          pattern={EMAIL_REG}
           required
         />
         <AuthInput

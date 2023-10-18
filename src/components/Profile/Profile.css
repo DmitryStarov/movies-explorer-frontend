@@ -93,17 +93,17 @@
   text-align: end;
 }
 
-.profile__request-error {
+.profile__request-message {
   margin: 173px 0 0;
   min-height: 12px;
-  color: #EE3465;
+  color: #3DDC84;
   font-size: 11px;
   line-height: 1.27;
   font-weight: 400;
 }
 
-.profile__request-error_type_success {
-  color: #3DDC84;
+.profile__request-message_type_error {
+  color: #EE3465;
 }
 
 .profile__edit-button {

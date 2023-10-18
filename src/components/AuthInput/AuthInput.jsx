@@ -9,6 +9,7 @@ const AuthInput = ({
   inputValue,
   errorMessage,
   handleChange,
+  pattern = null,
 }) => (
   <label className="auth-input">
     <span className="auth-input__title">{placeholder}</span>
@@ -23,6 +24,7 @@ const AuthInput = ({
       required
       value={inputValue ?? ''}
       onChange={handleChange}
+      pattern={pattern}
     />
     <span
       className="auth-input__error"

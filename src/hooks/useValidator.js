@@ -22,6 +22,7 @@ export default function useValidator(values = {}) {
     inputValues,
     setInputValues,
     errors,
+    setIsValid,
     handleChange,
     resetValidation,
     isValid,

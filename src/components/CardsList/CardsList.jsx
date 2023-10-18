@@ -1,30 +1,46 @@
 import './CardsList.css';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   MOVIES_PER_PAGE_1280,
   MOVIES_PER_PAGE_320,
   MOVIES_PER_PAGE_768,
-  testMovies,
 } from '../../utils/constants';
 import Card from '../Card/Card';
 
-const CardsList = ({ movies, isSavedMovies }) => {
+const CardsList = ({
+  movies, savedMovies, onClick, message,
+}) => {
   const [currentMovies, setCurrentMovies] = useState([]);
   const [perPage, setPerPage] = useState(Number);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [step, setStep] = useState(Number);
+  const [currentPage, setCurrentPage] = useState(0);
+  const { pathname } = useLocation();
+  const isSavedMovies = pathname === '/saved-movies';
 
   const checkWindowSize = () => {
-    if (window.innerWidth >= 1280) {
-      setPerPage(MOVIES_PER_PAGE_1280);
-    } else if (window.innerWidth >= 768) {
-      setPerPage(MOVIES_PER_PAGE_768);
+    if (window.innerWidth >= MOVIES_PER_PAGE_1280.breakPoint) {
+      setPerPage(MOVIES_PER_PAGE_1280.initial);
+      setStep(MOVIES_PER_PAGE_1280.step);
+    } else if (window.innerWidth >= MOVIES_PER_PAGE_768.breakPoint) {
+      setPerPage(MOVIES_PER_PAGE_768.initial);
+      setStep(MOVIES_PER_PAGE_768.step);
     } else {
-      setPerPage(MOVIES_PER_PAGE_320);
+      setPerPage(MOVIES_PER_PAGE_320.initial);
+      setStep(MOVIES_PER_PAGE_320.step);
     }
   };
 
   const loadMore = () => {
     setCurrentPage(currentPage + 1);
+  };
+
+  const handleIsSaved = (movie) => {
+    if (!isSavedMovies) {
+      const savedMovie = savedMovies.find(film => film.movieId === movie.id);
+      return savedMovie;
+    }
+    return true;
   };
 
   useEffect(() => {
@@ -33,27 +49,37 @@ const CardsList = ({ movies, isSavedMovies }) => {
       return;
     }
     checkWindowSize();
-    setCurrentMovies(movies.slice(0, currentPage * perPage));
+    setCurrentMovies(movies.slice(0, perPage + currentPage * step));
 
     window.addEventListener('resize', () => {
       checkWindowSize();
     });
-  }, [perPage, currentPage]);
+  }, [perPage, currentPage, movies]);
 
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [movies]);
   return (
     <section
       className={`card-list ${isSavedMovies ? 'card-list_type_saved-movies' : ''}`}
     >
-      {testMovies.length !== 0
+      {movies.length !== 0
         ? (
           <ul className="card-list__container">
             {currentMovies.map(movie => (
-              <Card movie={movie} key={movie.movieId} isSavedMovies={isSavedMovies} />))}
+              <Card
+                movie={movie}
+                key={isSavedMovies ? movie._id : movie.id}
+                isSavedMovies={isSavedMovies}
+                onClick={onClick}
+                isSaved={handleIsSaved(movie)}
+              />
+            ))}
           </ul>
         )
 
-        : <p className="card-list__title">Ничего не найдено</p>}
-      {testMovies.length > currentPage * perPage
+        : <p className="card-list__title">{message || 'Введите поисковый запрос'}</p>}
+      {movies.length > perPage + currentPage * step
         && !isSavedMovies
         && (
           <button

@@ -3,24 +3,6 @@
   display: flex;
 }
 
-.navigation__overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.2);
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.2s ease-in-out;
-  z-index: 11;
-}
-
-.navigation__overlay_visible {
-  visibility: visible;
-  opacity: 1;
-}
-
 .navigation__burger-menu {
   display: none;
   position: relative;
@@ -69,7 +51,7 @@
   justify-content: center;
   width: 100%;
   transition: opacity .25s linear, visibility .25s linear;
-  z-index: 10;
+  z-index: 11;
 }
 
 .navigation__links {
@@ -129,6 +111,23 @@
     position: fixed;
     right: 16px;
     top: 26px;
+  }
+  .navigation__overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    visibility: hidden;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+  }
+
+  .navigation__overlay_visible {
+    visibility: visible;
+    opacity: 1;
   }
 
   .navigation__links-container {

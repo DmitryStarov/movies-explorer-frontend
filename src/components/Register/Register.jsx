@@ -1,12 +1,28 @@
 import './Register.css';
+import { useEffect } from 'react';
 import Auth from '../Auth/Auth';
 import AuthInput from '../AuthInput/AuthInput';
 import useValidator from '../../hooks/useValidator';
+import { EMAIL_REG } from '../../utils/constants';
 
-const Register = ({ errorText }) => {
+const Register = ({
+  onRegister,
+  errorMessage,
+  resetError,
+  buttonState,
+}) => {
   const {
     inputValues, errors, isValid, handleChange,
   } = useValidator();
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onRegister(inputValues);
+  };
+
+  useEffect(() => {
+    resetError();
+  }, []);
 
   return (
     <main>
@@ -15,10 +31,12 @@ const Register = ({ errorText }) => {
         formName="sign-up"
         buttonText="Зарегистрироваться"
         isValid={isValid}
-        requestErrorText={errorText}
+        errorText={errorMessage}
         paragraphText="Уже зарегистрированы?"
         paragraphLink="/signin"
         paragraphButton="Войти"
+        onSubmit={handleSubmit}
+        buttonState={buttonState}
       >
         <AuthInput
           type="text"
@@ -36,11 +54,10 @@ const Register = ({ errorText }) => {
         <AuthInput
           type="email"
           placeholder="E-mail"
-          label
           name="email"
           inputValue={inputValues.email}
           errorMessage={errors.email}
-          placeInput="auth"
+          pattern={EMAIL_REG}
           handleChange={handleChange}
           required
         />
